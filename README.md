@@ -1,49 +1,44 @@
-Differential Drive Robot Controller
+# Differential Drive Robot Controller
 
-Overview
-
+## Overview
 A ROS 2 package for differential drive control and waypoint navigation using PID.
 
-Installation
-
+## Installation
+```sh
 cd ~/acceleration_ws/src
 git clone <repository-url>
 cd ~/acceleration_ws
 colcon build --packages-select diff_drive
 source install/setup.bash
+```
 
-Usage
-
-Run the Controller
-
+## Usage
+### Run the Controller
+```sh
 ros2 run diff_drive diff_drive_controller
-
-Publish Velocity Commands
-
+```
+### Publish Velocity Commands
+```sh
 ros2 topic pub /cmd_vel geometry_msgs/Twist '{linear: {x: 0.5}, angular: {z: 0.2}}'
-
-Run Waypoint Navigation
-
+```
+### Run Waypoint Navigation
+```sh
 ros2 run diff_drive waypoint_navigation.py --ros-args \
 -p waypoint_1_x:=2.0 -p waypoint_1_y:=1.0 -p waypoint_2_x:=4.0 -p waypoint_2_y:=3.0
-
-Launch Gazebo Simulation
-
+```
+### Launch Gazebo Simulation
+```sh
 ros2 launch diff_drive launch_sim.launch.py
+```
 
-Testing
+## Testing
+- Verify RPM output with `ros2 topic echo`.
+- Monitor navigation using `/odom`.
+- Tune PID for smooth movement.
 
-Verify RPM output with ros2 topic echo.
-
-Monitor navigation using /odom.
-
-Tune PID for smooth movement.
-
-License
-
+## License
 MIT License
 
-Contributors
-
+### Contributors
 Ashwin Sivakumar P
 
